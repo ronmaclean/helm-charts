@@ -1,0 +1,5 @@
+name: pipelinecontroller
+home: https://fabric8.io/
+version: 0.0.1
+appVersion: 0.0.1
+icon: file://pipeline.png

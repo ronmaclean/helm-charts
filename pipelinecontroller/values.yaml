@@ -1,0 +1,3 @@
+pipelinecontroller:
+  Image: ronmaclean/pipeline-controller
+  ImageTag: dev

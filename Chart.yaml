@@ -1,0 +1,8 @@
+name: helm-charts
+home: https://github.com/ronmaclean/helm-charts
+version: 0.0.7
+description: fabric8
+maintainers:
+  - name: fabric8 Team
+    email: fabric8@googlegroups.com
+icon: https://cdn4.iconfinder.com/data/icons/whsr-january-flaticon-set/512/umbrella.png
