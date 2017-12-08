@@ -1,25 +1,30 @@
 dependencies:
-  - name: jenkins
-    version: 0.9.2
-    repository: http://chartmuseum.thunder.thunder.fabric8.io
-  - name: sonatype-nexus
-    version: 0.1.1
-    repository: http://chartmuseum.thunder.thunder.fabric8.io
-  - name: pipelines
-    version: 0.0.1
-    repository: file://pipelines
+  # - name: jenkins
+  #   version: 0.9.2
+  #   repository: http://chartmuseum.thunder.thunder.fabric8.io
+  # - name: sonatype-nexus
+  #   version: 0.1.1
+  #   repository: http://chartmuseum.thunder.thunder.fabric8.io
+  # - name: pipelines
+  #   version: 0.0.1
+  #   repository: file://pipelines
   - name: exposecontroller
     version: 0.0.1
     repository: file://exposecontroller
-  - name: pipelinecontroller
-    version: 0.0.1
-    repository: file://pipelinecontroller
-  - name: monocular
-    version: 0.6.4
-    repository: http://chartmuseum.thunder.thunder.fabric8.io
+  # - name: pipelinecontroller
+  #   version: 0.0.1
+  #   repository: file://pipelinecontroller
+  # - name: monocular
+  #   version: 0.6.4
+  #   repository: http://chartmuseum.thunder.thunder.fabric8.io
   - name: chartmuseum
     version: 0.1.3
     repository: http://chartmuseum.thunder.thunder.fabric8.io
+
+  - name: monocular
+    version: 0.6.4
+    repository: file://monocular
+
   # - name: jenkins
   #   version: 0.9.0
   #   repository: https://kubernetes-charts.storage.googleapis.com

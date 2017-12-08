@@ -3,7 +3,11 @@ chartmuseum:
     annotations:
       fabric8.io/expose: "true"
 monocular:
+    ingress:
+      enabled: false
     api:
+      livenessProbe:
+        initialDelaySeconds: 360
       replicaCount: 1
       service:
         type: ClusterIP
@@ -11,12 +15,9 @@ monocular:
           fabric8.io/expose: "true"
       config:
         repos:
-        - name: incubator
-          url: null
-          source: null
-        - name: chartmuseum
-          url: http://fabric8-chartmuseum
-          source: https://github.com/ronmaclean/helm-charts
+          - name: chartmuseum
+            url: http://chartmuseum.default.192.168.64.16.nip.io
+            source: https://github.com/ronmaclean/helm-charts
         cacheRefreshInterval: 30
     ui:
       replicaCount: 1
@@ -27,8 +28,6 @@ monocular:
     prerender:
       service:
         type: ClusterIP
-    ingress:
-      enabled: false
 jenkins:
   # Default values for jenkins.
   # This is a YAML-formatted file.

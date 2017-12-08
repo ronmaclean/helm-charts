@@ -3,7 +3,7 @@ NAME := helm-charts
 OS := $(shell uname)
 RELEASE_VERSION := $(shell semver-release-version)
 HELM := $(shell command -v helm 2> /dev/null)
-
+IP := $(shell minikube ip)
 setup:
 	minikube addons enable ingress
 ifndef HELM
@@ -22,7 +22,8 @@ build: clean
 	helm lint
 
 install: clean build
-	helm install . --name fabric8
+	helm install . --name fabric8 --set "- monocular.ingress.hosts=monocular.default.$(IP)"
+	# helm install . --name fabric8
 	watch kubectl get pods
 
 upgrade: clean build
