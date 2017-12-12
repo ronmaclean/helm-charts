@@ -22,7 +22,7 @@ build: clean
 	helm lint
 
 install: clean build
-	helm install . --name fabric8 --set "- monocular.ingress.hosts=monocular.default.$(IP)"
+	helm install . --name fabric8
 	# helm install . --name fabric8
 	watch kubectl get pods
 
@@ -33,6 +33,7 @@ upgrade: clean build
 delete:
 	helm delete --purge fabric8
 	kubectl delete cm --all
+	kubectl delete ing --all
 
 clean:
 	rm -rf charts

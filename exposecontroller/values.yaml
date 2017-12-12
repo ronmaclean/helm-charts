@@ -1,7 +1,7 @@
 exposecontroller:
   Name: exposecontroller
   Image: "fabric8/exposecontroller"
-  ImageTag: "2.3.31"
+  ImageTag: "2.3.32"
   Component: "exposecontroller"
   APIServer: ""
   NodeIp: ""
