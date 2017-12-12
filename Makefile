@@ -15,6 +15,8 @@ endif
 endif
 	helm init
 	helm repo add chartmuseum $(CHART_REPO)
+	helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+	helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 build: clean
 	rm -rf requirements.lock
@@ -22,8 +24,7 @@ build: clean
 	helm lint
 
 install: clean build
-	helm install . --name fabric8 --set "- monocular.ingress.hosts=monocular.default.$(IP)"
-	# helm install . --name fabric8
+	helm install . --name fabric8
 	watch kubectl get pods
 
 upgrade: clean build
@@ -33,10 +34,12 @@ upgrade: clean build
 delete:
 	helm delete --purge fabric8
 	kubectl delete cm --all
+	kubectl delete ing --all
 
 clean:
 	rm -rf charts
 	rm -rf ${NAME}*.tgz
+	helm repo update
 
 release: clean
 	helm dependency build

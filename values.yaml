@@ -2,6 +2,10 @@ chartmuseum:
   service:
     annotations:
       fabric8.io/expose: "true"
+  persistence:
+    Enabled: true
+    AccessMode: ReadWriteOnce
+    Size: 8Gi
 monocular:
     ingress:
       enabled: false
@@ -13,18 +17,25 @@ monocular:
         type: ClusterIP
         annotations:
           fabric8.io/expose: "true"
+          fabric8.io/ingress.name: "monocular"
+          fabric8.io/ingress.path: "/api/"
+          fabric8.io/ingress.annotations: "ingress.kubernetes.io/rewrite-target: /\nkubernetes.io/ingress.class: nginx"
       config:
         repos:
           - name: chartmuseum
-            url: http://chartmuseum.default.192.168.64.16.nip.io
+            url: http://fabric8-chartmuseum:8080
             source: https://github.com/ronmaclean/helm-charts
         cacheRefreshInterval: 30
+        releasesEnabled: false
     ui:
+      appName: ProjectX
       replicaCount: 1
       service:
         type: ClusterIP
         annotations:
           fabric8.io/expose: "true"
+          fabric8.io/ingress.name: "monocular"
+          fabric8.io/ingress.path: "/"
     prerender:
       service:
         type: ClusterIP
