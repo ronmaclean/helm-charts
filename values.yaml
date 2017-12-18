@@ -2,6 +2,9 @@ chartmuseum:
   service:
     annotations:
       fabric8.io/expose: "true"
+  basicAuth:
+    user: admin
+    pass: admin
   persistence:
     Enabled: true
     AccessMode: ReadWriteOnce
@@ -113,26 +116,35 @@ jenkins:
   
   Agent:
     Enabled: true
-    Image: jenkinsci/jnlp-slave
-    ImageTag: 2.62
-    Component: "jenkins-slave"
-    Privileged: false
-    Cpu: "200m"
-    Memory: "256Mi"
-    # You may want to change this to true while testing a new image
-    AlwaysPullImage: false
-    # You can define the volumes that you want to mount for this container
-    # Allowed types are: ConfigMap, EmptyDir, HostPath, Nfs, Pod, Secret
-    # Configure the attributes as they appear in the corresponding Java class for that type
-    # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
-    volumes:
-    # - type: Secret
-    #   secretName: mysecret
-    #   mountPath: /var/myapp/mysecret
-    NodeSelector: {}
+
+    Component: "jenkins-agent"
+
     # Key Value selectors. Ex:
     # jenkins-agent: v1
-  
+    PodTemplates:
+      Maven:
+        Name: maven
+        Label: jenkins-maven
+        EnvVars:
+          JENKINS_URL: http://jenkins:8080
+        Containers:
+          Jnlp:
+            Image: jenkinsci/jnlp-slave:3.14-1
+            RequestCpu: "100m"
+            RequestMemory: "128Mi"
+            Args: '${computer.jnlpmac} ${computer.name}'
+          Maven:
+            Image: fabric8/maven-builder:vd81dedb
+            Privileged: true
+            RequestCpu: "200m"
+            RequestMemory: "256Mi"
+            LimitCpu: "200m"
+            LimitMemory: "256Mi"
+            # You may want to change this to true while testing a new image
+            # AlwaysPullImage: true
+            Command: "/bin/sh -c"
+            Args: "cat"
+            Tty: true
   Persistence:
     Enabled: true
     ## A manually managed Persistent Volume and Claim
