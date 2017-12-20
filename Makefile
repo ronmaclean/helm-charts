@@ -33,13 +33,10 @@ upgrade: clean build
 
 delete:
 	helm delete --purge fabric8
-	kubectl delete cm --all
-	kubectl delete ing --all
 
 clean:
 	rm -rf charts
 	rm -rf ${NAME}*.tgz
-	helm repo update
 
 release: clean
 	helm dependency build

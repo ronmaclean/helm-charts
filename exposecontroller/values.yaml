@@ -1,12 +1,5 @@
-exposecontroller:
-  Name: exposecontroller
-  Image: "fabric8/exposecontroller"
-  ImageTag: "2.3.32"
-  Component: "exposecontroller"
-  APIServer: ""
-  NodeIp: ""
-  Exposer: ""
-  Domain: ""
-  WatchCurrentNamespace: "true"
-  HTTP: "true"
-  TLSACME: ""
+Image: "fabric8/exposecontroller"
+ImageTag: "2.3.34"
+Exposer: ""
+Domain: ""
+HTTP: "true"
