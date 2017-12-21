@@ -1,6 +1,6 @@
 name: helm-charts
 home: https://github.com/ronmaclean/helm-charts
-version: 0.0.7
+version: 0.0.8
 description: fabric8
 maintainers:
   - name: fabric8 Team
