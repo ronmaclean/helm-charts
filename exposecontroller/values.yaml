@@ -1,5 +1,0 @@
-Image: "fabric8/exposecontroller"
-ImageTag: "2.3.34"
-Exposer: ""
-Domain: ""
-HTTP: "true"

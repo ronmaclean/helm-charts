@@ -9,11 +9,13 @@ dependencies:
     version: 0.0.1
     repository: file://pipelines
   - name: exposecontroller
-    version: 0.0.1
-    repository: file://exposecontroller
-  - name: cleanup
-    version: 0.0.1
-    repository: file://cleanup
+    version: 0.1.1
+    repository: http://chartmuseum.thunder.thunder.fabric8.io
+    alias: expose
+  - name: exposecontroller
+    version: 0.1.1
+    repository: http://chartmuseum.thunder.thunder.fabric8.io
+    alias: cleanup
   - name: pipelinecontroller
     version: 0.0.1
     repository: file://pipelinecontroller
