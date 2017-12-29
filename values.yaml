@@ -154,7 +154,7 @@ jenkins:
             RequestMemory: "128Mi"
             Args: '${computer.jnlpmac} ${computer.name}'
           Maven:
-            Image: fabric8/maven-builder:vd81dedb
+            Image: ronmaclean/builder-maven:dev
             Privileged: true
             RequestCpu: "200m"
             RequestMemory: "256Mi"
